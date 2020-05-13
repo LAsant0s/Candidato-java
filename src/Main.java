@@ -27,28 +27,27 @@ public class Main {
 
 		// 3) escolaridade e experiencia
 		int pontosEscolaridade = 0;
-		
+
 		switch (escolaridade) {
-		case 1: {
+		case 1:
 			pontosEscolaridade = 10;
 			break;
-		}
-		case 2: {
+
+		case 2:
 			pontosEscolaridade = 20;
 			break;
-		}
-		case 3: {
+
+		case 3:
 			pontosEscolaridade = 30;
 			break;
-		}
-		case 4: {
+
+		case 4:
 			pontosEscolaridade = 40;
 			break;
 		}
-		}
 
 		int pontosExperiencia;
-		
+
 		if (xpProfissional == 0) {
 			pontosExperiencia = 0;
 		} else if (xpProfissional <= 2) {
@@ -60,6 +59,23 @@ public class Main {
 		}
 		System.out.println("Pontos por escolaridade: " + pontosEscolaridade);
 		System.out.println("Pontos por experiência: " + pontosExperiencia);
+		System.out.println("");
+
+		// Resultado final
+		if (pontosEscolaridade < 20) {
+			System.out.println("Infelizmente seu perfil não atende a empresa");
+		} else {
+			System.out.println("Você está habilitado para o(s) seguinte(s) cargos(s):");
+		}
+		if (pontosEscolaridade >= 20 && habilitacao == 'S') {
+			System.out.println("ASSISTENTE");
+		}
+		if (pontosExperiencia > 10 && pontosEscolaridade >= 30) {
+			System.out.println("GERENTE");
+		}
+		if (pontosExperiencia > 20 && disp == 'S' && pontosEscolaridade >= 30) {
+			System.out.println("ANALISTA");
+		}
 
 	}
 
