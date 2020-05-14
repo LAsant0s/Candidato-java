@@ -4,6 +4,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		int pontosEscolaridade = 0;
+		int pontosExperiencia;
+		int assistente = 0;
+		int gerente = 0;
+		int analista = 0;
 
 		// 1) leitura da escolaridade
 		System.out.println("Qual sua escolaridade?");
@@ -26,27 +31,21 @@ public class Main {
 		System.out.println("");
 
 		// 3) escolaridade e experiencia
-		int pontosEscolaridade = 0;
 
 		switch (escolaridade) {
 		case 1:
 			pontosEscolaridade = 10;
 			break;
-
 		case 2:
 			pontosEscolaridade = 20;
 			break;
-
 		case 3:
 			pontosEscolaridade = 30;
 			break;
-
 		case 4:
 			pontosEscolaridade = 40;
 			break;
 		}
-
-		int pontosExperiencia;
 
 		if (xpProfissional == 0) {
 			pontosExperiencia = 0;
@@ -62,21 +61,31 @@ public class Main {
 		System.out.println("");
 
 		// Resultado final
-		if (pontosEscolaridade < 20) {
+
+		if (pontosEscolaridade >= 20 && habilitacao == 'S') {
+			assistente = 1;
+		}
+		if (pontosExperiencia > 10 && pontosEscolaridade >= 30) {
+			gerente = 1;
+		}
+		if (pontosExperiencia > 20 && disp == 'S' && pontosEscolaridade >= 30) {
+			analista = 1;
+		}
+
+		if (assistente < 1 && gerente < 1 && analista < 1) {
 			System.out.println("Infelizmente seu perfil não atende a empresa");
 		} else {
 			System.out.println("Você está habilitado para o(s) seguinte(s) cargos(s):");
+			if (assistente == 1) {
+				System.out.println("ASSISTENTE");
+			}
+			if (gerente == 1) {
+				System.out.println("GERENTE");
+			}
+			if (analista == 1) {
+				System.out.println("ANALISTA");
+			}
 		}
-		if (pontosEscolaridade >= 20 && habilitacao == 'S') {
-			System.out.println("ASSISTENTE");
-		}
-		if (pontosExperiencia > 10 && pontosEscolaridade >= 30) {
-			System.out.println("GERENTE");
-		}
-		if (pontosExperiencia > 20 && disp == 'S' && pontosEscolaridade >= 30) {
-			System.out.println("ANALISTA");
-		}
-
+		sc.close();
 	}
-
 }
